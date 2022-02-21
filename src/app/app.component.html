@@ -1,23 +1,25 @@
-<div class="w-full h-screen px-20 py-36 bg-slate-500 text-white">
-  <div class="text-center mb-10 text-3xl capitalize">
-    <p class="mb-5">
-      Temperature
-    </p>
-    <span [style.color]="limit.color">{{ limit.text }}  {{temp}} °</span>
-  </div>
-  <div class="p-2 transition-all rounded-full w-full h-10 border border-white">
 
-    <div  [style.width]="width()" [style.background-color]="limit.color" class="transition-all h-full bg-indigo-600 rounded-full">
-      
-    </div>
+<h1 class="font-bold text-blue-900 text-4xl text-center mb-4">Temperature & Humidity Dashboard</h1>
+<div class="grid grid-rows-2">
+
+  <div class="flex justify-around">
+    <app-gauge [title]="Temperature" [labelStylee]="TemplabelStyle" [valuee]="temp"></app-gauge>
+    <app-gauge [title]="Humidity" [labelStylee]="HumiditylabelStyle" [valuee]="humidity"></app-gauge>
   </div>
-  <div class="mt-16 text-center text-3xl ">
-    <div class="w-80 h-80 transition-all radial-progress text-white " [style]="'--value:'+humidity.toString()">
-      <p>
-        Humidity
-      </p>
-      {{humidity}}%
-    </div>
+
+  <div style="display: block;" class="w-full">
+    <canvas baseChart width="500" height="200"
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"
+      >
+    </canvas>
   </div>
+
 </div>
-<router-outlet></router-outlet>
+
+
+<!-- <router-outlet></router-outlet> -->
