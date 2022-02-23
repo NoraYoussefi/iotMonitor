@@ -6,6 +6,8 @@ import {
 import { Observable } from 'rxjs';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-root',
@@ -38,9 +40,44 @@ export class AppComponent {
       this.updateChart(this.temp,this.humidity)
     },
     2000);
-    //---------------------------------------------------
+    //----------------Sweet alert2-------------------
+    if(this.temp>20){
+      if(!this.ignored){
+        Swal.fire({
+          title: 'Danger, temperature is too hot! ',
+          text: "You must check the environment",
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ignore!',
+          didClose:() => {
+            this.ignored = true;
+          },
 
+        })
 
+      }
+
+    }
+    if(this.temp<10){
+      if(!this.ignored){
+        Swal.fire({
+          title: 'Danger, temperature is too cold!',
+          text: "You must check the environment",
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ignore!',
+          didClose:() => {
+            this.ignored = true;
+          },
+
+        })
+
+      }
+
+    }
+    console.log(this.temp);
     /*
         this.limit = this.setLimit();
         const dataRef = this.db.object<string>('data');
@@ -57,7 +94,7 @@ export class AppComponent {
 
 
   }
-
+  ignored: boolean = false;
   data!: Observable<string | null>;
 
 
@@ -135,6 +172,7 @@ export class AppComponent {
     this.lineChartData[0].data?.push(temp)
     this.lineChartData[1].data?.push(humidity)
     this.lineChartLabels.push(new Date().toLocaleTimeString())
+
   }
 
 
