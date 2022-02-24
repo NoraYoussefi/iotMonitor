@@ -23,6 +23,7 @@ export class GaugeComponent implements OnInit {
 
   max = 80;
 
+
   sectors: any[]= [
   {
     from: 0,

@@ -33,19 +33,19 @@ export class AppComponent {
 
 
     //--------------FAKE DATA GENERATOR------------------
-    window.setInterval(() => {
-      this.temp=Math.floor(Math.random() * 50)
-      this.humidity=Math.floor(Math.random() * 100)
-      this.limit = this.setLimit();
-      this.updateChart(this.temp,this.humidity)
-    },
-    2000);
+    // window.setInterval(() => {
+    //   this.temp=Math.floor(Math.random() * 50)
+    //   this.humidity=Math.floor(Math.random() * 100)
+    //   this.limit = this.setLimit();
+    //   this.updateChart(this.temp,this.humidity)
+    // },
+    // 2000);
     //----------------Sweet alert2-------------------
-    if(this.temp>20){
+    if(this.temp>27){
       if(!this.ignored){
         Swal.fire({
           title: 'Danger, temperature is too hot! ',
-          text: "You must check the environment",
+          text: "You must check the server room ",
           icon: 'warning',
           showCancelButton: false,
           confirmButtonColor: '#3085d6',
@@ -59,11 +59,11 @@ export class AppComponent {
       }
 
     }
-    if(this.temp<10){
+    if(this.temp<18){
       if(!this.ignored){
         Swal.fire({
           title: 'Danger, temperature is too cold!',
-          text: "You must check the environment",
+          text: "You must check the server room ",
           icon: 'warning',
           showCancelButton: false,
           confirmButtonColor: '#3085d6',
@@ -78,7 +78,47 @@ export class AppComponent {
 
     }
     console.log(this.temp);
-    /*
+    
+    if(this.humidity>60){
+      if(!this.ignored){
+        Swal.fire({
+          title: 'Danger, humid air! ',
+          text: "You must check the server room ",
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ignore!',
+          didClose:() => {
+            this.ignored = true;
+          },
+
+        })
+
+      }
+
+    }
+    if(this.humidity<40){
+      if(!this.ignored){
+        Swal.fire({
+          title: 'Danger, Dry air!',
+          text: "You must check the server room ",
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ignore!',
+          didClose:() => {
+            this.ignored = true;
+          },
+
+        })
+
+      }
+
+    }
+    console.log(this.humidity);
+
+    // --------------------firebase-----------------
+
         this.limit = this.setLimit();
         const dataRef = this.db.object<string>('data');
         this.data = dataRef.valueChanges();
@@ -90,7 +130,7 @@ export class AppComponent {
             this.updateChart(this.temp,this.humidity)
           }
         });
-    */
+
 
 
   }

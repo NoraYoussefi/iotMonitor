@@ -1,29 +1,28 @@
-<div class="bg-black-900 ">
+<div class="bg-dark-900">
 
-  <ejs-circulargauge width="370" height="380" >
+  <ejs-circulargauge width="320" height="330" >
     <e-axes>
       <e-axis labelStyle={{labelStylee}} >
         <e-pointers>
           <e-pointer value={{valuee}} ></e-pointer>
         </e-pointers>
         <e-ranges >
-          <e-range start=0 end=10 radius="110%" strokeWidth=10 color="blue"></e-range>
-          <e-range start=11 end=30 radius="110%" strokeWidth=10 color="cyan"></e-range>
-          <e-range start=31 end=40 radius="110%" strokeWidth=10 color="green"></e-range>
-          <e-range start=41 end=50 radius="110%" strokeWidth=10 color="orange"></e-range>
-          <e-range start=51 end=60 radius="110%" strokeWidth=10 color="red"></e-range>
-          <e-range start=61 end=100 radius="110%" strokeWidth=10 color="black"></e-range>
+          <e-range start=0 end=18 radius="110%" strokeWidth=10 color="blue"></e-range>
+          <e-range start=18 end=60 radius="110%" strokeWidth=10 color="green"></e-range>
+          <e-range start=60 end=80 radius="110%" strokeWidth=10 color="orange"></e-range>
+
+          <e-range start=80  end=100 radius="110%" strokeWidth=10 color="red"></e-range>
         </e-ranges>
       </e-axis>
     </e-axes>
   </ejs-circulargauge>
 
-  <h3 class="text-center font-bold text-2xl hover:decoration-dashed">{{title}} :
-    <span class="text-pink-200 font-bold text-3xl">
+  <h3 class="text-center font-bold text-2xl text-blue-700 hover:decoration-dashed">{{title}} :
+    <span class="text-blue-900 font-bold text-3xl">
       {{valuee}}
     </span>
-      <span *ngIf="title=='Temperature'" >C</span>
-      <span *ngIf="title=='Humidity'" >%</span>
+      <span style="color:black" *ngIf="title=='Temperature'" >C</span>
+      <span style="color:black"  *ngIf="title=='Humidity'" >%</span>
   </h3>
 
 </div>

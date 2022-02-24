@@ -1,15 +1,15 @@
 
-<h1 class="font-bold text-pink-100 text-4xl text-center italic hover:not-italic top-4 hover:top-6">Temperature & Humidity Dashboard</h1><br><br>
+<h1 class="font-bold text-blue-500 text-4xl text-center italic hover:not-italic top-4 hover:top-6">Temperature & Humidity Dashboard</h1><br><br>
 <div class="grid grid-rows-3">
 
   <div class="flex justify-around ">
    <div style="height:400px;width:400px;">
        <app-gauge [title]="Temperature" [labelStylee]="TemplabelStyle" [valuee]="temp"></app-gauge>
    </div>
-   <div style="height:400px;width:400px;">
+   <div style="height:400px;width:400px;" class="mr-0">
        <app-gauge [title]="Humidity" [labelStylee]="HumiditylabelStyle" [valuee]="humidity"></app-gauge>
    </div>
-   <div style="display: block;" class="w-full" style="height:620px;width:620px;">
+   <div class="ml-0 pl-0" style="display: block;" class="w-full" style="height:620px;width:620px;">
       <canvas baseChart width="250" height="165"
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
