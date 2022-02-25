@@ -27,19 +27,17 @@ export class AppComponent {
   };
 
 
-
-
   constructor(private db: AngularFireDatabase) {
 
 
     //--------------FAKE DATA GENERATOR------------------
-    // window.setInterval(() => {
-    //   this.temp=Math.floor(Math.random() * 50)
-    //   this.humidity=Math.floor(Math.random() * 100)
-    //   this.limit = this.setLimit();
-    //   this.updateChart(this.temp,this.humidity)
-    // },
-    // 2000);
+    window.setInterval(() => {
+      this.temp=Math.floor(Math.random() * 50)
+      this.humidity=Math.floor(Math.random() * 100)
+      this.limit = this.setLimit();
+      this.updateChart(this.temp,this.humidity)
+    },
+    2000);
     //----------------Sweet alert2-------------------
     if(this.temp>27){
       if(!this.ignored){
@@ -78,7 +76,7 @@ export class AppComponent {
 
     }
     console.log(this.temp);
-    
+
     if(this.humidity>60){
       if(!this.ignored){
         Swal.fire({
@@ -119,17 +117,17 @@ export class AppComponent {
 
     // --------------------firebase-----------------
 
-        this.limit = this.setLimit();
-        const dataRef = this.db.object<string>('data');
-        this.data = dataRef.valueChanges();
-        this.data.subscribe((data) => {
-          if (data) {
-            this.temp = Number(data.split(',')[1]);
-            this.humidity = Number(data.split(',')[0]);
-            this.limit = this.setLimit();
-            this.updateChart(this.temp,this.humidity)
-          }
-        });
+        // this.limit = this.setLimit();
+        // const dataRef = this.db.object<string>('data');
+        // this.data = dataRef.valueChanges();
+        // this.data.subscribe((data) => {
+        //   if (data) {
+        //     this.temp = Number(data.split(',')[1]);
+        //     this.humidity = Number(data.split(',')[0]);
+        //     this.limit = this.setLimit();
+        //     this.updateChart(this.temp,this.humidity)
+        //   }
+        // });
 
 
 
